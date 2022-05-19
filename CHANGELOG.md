@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/sws2apps/firebase-deployment/compare/v1.1.2...v1.2.0) (2022-05-19)
+
+
+### Features
+
+* **deps:** use @vercel/ncc ([102ec57](https://github.com/sws2apps/firebase-deployment/commit/102ec57a3b1ef0aedc319ca6a49fb1544aad333b))
+
 ## [1.1.2](https://github.com/sws2apps/firebase-deployment/compare/v1.1.1...v1.1.2) (2022-05-19)
 
 
