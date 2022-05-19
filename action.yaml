@@ -1,11 +1,6 @@
 name: Firebase Deployment
 author: Scheduling Workbox System <sws2apps.notification@gmail.com>
 description: A GitHub Action to deploy to Firebase
-inputs:
-  params:
-    description: Additional parameters for firebase command
-    required: false
-    default: ''
 runs:
   using: 'node16'
   main: 'dist/index.js'
