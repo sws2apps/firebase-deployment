@@ -3,7 +3,7 @@
   "description": "A GitHub Action to deploy firebase hosting and functions together.",
   "version": "1.0.1",
   "private": true,
-  "main": "dist/ServiceWorkerWrapper.js",
+  "type": "module",
   "homepage": "https://github.com/sws2apps/firebase-deployment#readme",
   "author": "Scheduling Workbox System <sws2apps.notification@gmail.com>",
   "bugs": {
