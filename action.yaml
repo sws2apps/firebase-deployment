@@ -7,8 +7,8 @@ inputs:
     required: false
     default: ''
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'node18'
+  main: 'index.js'
 branding:
   icon: 'upload-cloud'
-  color: 'blue'
+  color: 'purple'
