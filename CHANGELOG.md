@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/sws2apps/firebase-deployment/compare/v1.2.1...v1.2.2) (2022-05-19)
+
+
+### Bug Fixes
+
+* **actions:** remove docker ([5eb74c7](https://github.com/sws2apps/firebase-deployment/commit/5eb74c74b410ae7a29aebee5392825fdeda24b30))
+
 ## [1.2.1](https://github.com/sws2apps/firebase-deployment/compare/v1.2.0...v1.2.1) (2022-05-19)
 
 
