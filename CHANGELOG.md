@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/sws2apps/firebase-deployment/compare/v1.1.1...v1.1.2) (2022-05-19)
+
+
+### Bug Fixes
+
+* **package.json:** add type module ([8896264](https://github.com/sws2apps/firebase-deployment/commit/88962645a0213033405a2c253e65027d0c486ae6))
+
 ## [1.1.1](https://github.com/sws2apps/firebase-deployment/compare/v1.1.0...v1.1.1) (2022-05-19)
 
 
