@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/sws2apps/firebase-deployment/compare/v1.1.0...v1.1.1) (2022-05-19)
+
+
+### Bug Fixes
+
+* **actions:** downgrade to node16 ([472deb2](https://github.com/sws2apps/firebase-deployment/commit/472deb2afdeaba52ff14990b44d3b04e91a153c2))
+
 # [1.1.0](https://github.com/sws2apps/firebase-deployment/compare/v1.0.1...v1.1.0) (2022-05-19)
 
 
