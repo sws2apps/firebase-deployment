@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/sws2apps/firebase-deployment/compare/v1.2.0...v1.2.1) (2022-05-19)
+
+
+### Bug Fixes
+
+* **semantic-release:** package.json not updated ([6724777](https://github.com/sws2apps/firebase-deployment/commit/67247779ce654220280ae29a29b0f4e0d254fec6))
+
 # [1.2.0](https://github.com/sws2apps/firebase-deployment/compare/v1.1.2...v1.2.0) (2022-05-19)
 
 
