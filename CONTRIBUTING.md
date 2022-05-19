@@ -1,36 +1,36 @@
 # How to Contribute
 
-React Service Worker Helper is one of the utilities that is developped by the [Scheduling Workbox System (SWS)](https://github.com/sws2apps) team. But we are also more than happy to receive support from those who are very intersted to assist us. Hopefully this document makes the process for contributing clear and answers some questions that you may have.
+Firebase Deployment is one of the utilities that is developped by the [Scheduling Workbox System (SWS)](https://github.com/sws2apps) team. But we are also more than happy to receive support from those who are very intersted to assist us. Hopefully this document makes the process for contributing clear and answers some questions that you may have.
 
-Please make sure that you have read the [code of conduct](https://github.com/sws2apps/react-sw-helper/blob/main/CODE_OF_CONDUCT.md) before continuing.
+Please make sure that you have read the [code of conduct](https://github.com/sws2apps/firebase-deployment/blob/main/CODE_OF_CONDUCT.md) before continuing.
 
 ## Semantic Versioning
 
-SWS Pocket follows semantic versioning. We release patch versions for bugfixes, minor versions for new features or non-essential changes, and major versions for any breaking changes. Every significant change is documented in the [changelog](https://github.com/sws2apps/react-sw-helper/blob/main/CHANGELOG.md) file.
+Firebase Deployment follows semantic versioning. We release patch versions for bugfixes, minor versions for new features or non-essential changes, and major versions for any breaking changes. Every significant change is documented in the [changelog](https://github.com/sws2apps/firebase-deployment/blob/main/CHANGELOG.md) file.
 
 ## Branch Organization
 
 We used three different branches to make production, beta and alpha releases of SWS Pocket:
 
-| branch | whats for                                                                                                               |
-| :----- | :---------------------------------------------------------------------------------------------------------------------- |
-| main   | making production release of React Service Worker Helper: bug fix for the current version will be queued in this branch |
-| beta   | making beta release of React Service Worker Helper: new feature will be queued in this branch                           |
-| alpha  | making alpha release of React Service Worker Helper: major update to the application will be queued in this branch      |
+| branch | whats for                                                                                                       |
+| :----- | :-------------------------------------------------------------------------------------------------------------- |
+| main   | making production release of Firebase Deployment: bug fix for the current version will be queued in this branch |
+| beta   | making beta release of Firebase Deployment: new feature will be queued in this branch                           |
+| alpha  | making alpha release of Firebase Deployment: major update to the application will be queued in this branch      |
 
 ## Bugs
 
 ### Known Issues and Report
 
-We are using [GitHub Issues](https://github.com/sws2apps/react-sw-helper/issues) to keep track of bugs fix. We keep a close eye on this and try to make it clear when we have an internal fix in progress. Before filing a new task, try to make sure your problem doesn’t already exist.
+We are using [GitHub Issues](https://github.com/sws2apps/firebase-deployment/issues) to keep track of bugs fix. We keep a close eye on this and try to make it clear when we have an internal fix in progress. Before filing a new task, try to make sure your problem doesn’t already exist.
 
 ### Security Bugs
 
-Please do not report security bugs in the public issues; go through the process outlined on the [Security Policy](https://github.com/sws2apps/react-sw-helper/blob/main/SECURITY.md).
+Please do not report security bugs in the public issues; go through the process outlined on the [Security Policy](https://github.com/sws2apps/firebase-deployment/blob/main/SECURITY.md).
 
 ## Proposing a Change
 
-If you intend to add new features or suggest major changes to JW EPUB Parser, check first that your idea is not yet in our tracking issues list. If not, we recommend creating a new [discussion first](https://github.com/sws2apps/react-sw-helper/discussions/categories/ideas). This lets us reach an agreement on your proposal before you put significant effort into it. After it has been approved, please create [new issue](https://github.com/sws2apps/react-sw-helper/issues), and choose the correct template.
+If you intend to add new features or suggest major changes to Firebase Deployment, check first that your idea is not yet in our tracking issues list. If not, we recommend creating a new [discussion first](https://github.com/sws2apps/firebase-deployment/discussions/categories/ideas). This lets us reach an agreement on your proposal before you put significant effort into it. After it has been approved, please create [new issue](https://github.com/sws2apps/firebase-deployment/issues), and choose the correct template.
 
 If you’re only fixing a bug, it’s fine to submit a pull request right away but we still recommend to file an issue detailing what you’re fixing. This is helpful in case we don’t accept that specific fix but want to keep track of the issue.
 
@@ -45,10 +45,6 @@ If you’re only fixing a bug, it’s fine to submit a pull request right away b
 ## Sending a Pull Request (PR)
 
 We are monitoring for pull requests. We will review your pull request and either merge it, request changes to it, or close it with an explanation. We’ll do our best to provide updates and feedback throughout the process.
-
-**Before submitting a PR**, please make sure the following is done:
-
-- Run `npm test` to make sure that your changes pass the test.
 
 **When commiting your changes**, we recommend the following commands to be run:
 
