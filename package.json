@@ -1,0 +1,24 @@
+{
+  "name": "firebase-deployment",
+  "description": "A GitHub Action to deploy firebase hosting and functions together.",
+  "version": "1.0.1",
+  "private": true,
+  "main": "dist/ServiceWorkerWrapper.js",
+  "homepage": "https://github.com/sws2apps/firebase-deployment#readme",
+  "author": "Scheduling Workbox System <sws2apps.notification@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/sws2apps/firebase-deployment/issues",
+    "email": "sws2apps.notification@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sws2apps/firebase-deployment.git"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+  }
+}
