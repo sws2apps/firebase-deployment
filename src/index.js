@@ -1,7 +1,10 @@
 import core from '@actions/core';
 import exec from '@actions/exec';
 
-await exec.exec('npm i -g firebase-tools');
+const options = {};
+options.cwd = process.env.GITHUB_WORKSPACE;
+
+await exec.exec('npm i -g firebase-tools', [], options);
 
 if (!process.env.FIREBASE_TOKEN) {
 	core.setFailed('Oh... The FIREBASE_TOKEN is missing');
@@ -13,7 +16,9 @@ if (!process.env.FIREBASE_PROJECT) {
 
 try {
 	await exec.exec(
-		`firebase deploy -m ${process.env.GITHUB_SHA} --project ${process.env.FIREBASE_PROJECT}`
+		`firebase deploy -m ${process.env.GITHUB_SHA} --project ${process.env.FIREBASE_PROJECT}`,
+		[],
+		options
 	);
 } catch (error) {
 	core.setFailed(
