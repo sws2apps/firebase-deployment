@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/sws2apps/firebase-deployment/compare/v1.2.2...v1.3.0) (2022-05-22)
+
+
+### Features
+
+* **action:** add options on exec ([e009910](https://github.com/sws2apps/firebase-deployment/commit/e009910f1a66f646ec76015b35b2f7f9cc44de5e))
+
 ## [1.2.2](https://github.com/sws2apps/firebase-deployment/compare/v1.2.1...v1.2.2) (2022-05-19)
 
 
