@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/sws2apps/firebase-deployment/compare/v1.3.0...v1.3.1) (2022-06-02)
+
+
+### Bug Fixes
+
+* **actions:** remove unnecessary options ([7ddb6ab](https://github.com/sws2apps/firebase-deployment/commit/7ddb6ab19dad5c28f653760097d81c76e0ce1846))
+
 # [1.3.0](https://github.com/sws2apps/firebase-deployment/compare/v1.2.2...v1.3.0) (2022-05-22)
 
 
