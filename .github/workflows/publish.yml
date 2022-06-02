@@ -30,12 +30,3 @@ jobs:
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          
-      - name: Push changes to remote repository
-        run: |
-          git config --global user.name '${{ github.actor }}'
-          git config --global user.email '${{ github.actor }}@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          git add -A
-          git commit -am "chore(actions): adding new dist folder for release"
-          git push origin main
