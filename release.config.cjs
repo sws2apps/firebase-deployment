@@ -23,7 +23,7 @@ module.exports = {
 		[
 			'@semantic-release/git',
 			{
-				assets: ['package.json', 'CHANGELOG.md'],
+				assets: ['dist/index.js', 'dist/licenses.txt', 'dist/package.json', 'package.json', 'CHANGELOG.md'],
 				message:
 					'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
 			},
@@ -34,15 +34,6 @@ module.exports = {
 				prepareCmd: 'npm run build',
 			},
 		],
-		[
-			'@semantic-release/github',
-			{
-				"assets": [
-					{ "path": "dist/index.js" },
-					{ "path": "dist/licenses.txt" },
-					{ "path": "dist/package.json" }
-			     	]
-			}
-		],
+		'@semantic-release/github',
 	],
 };
