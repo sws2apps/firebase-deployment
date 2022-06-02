@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/sws2apps/firebase-deployment/compare/v1.3.3...v1.3.4) (2022-06-02)
+
+
+### Bug Fixes
+
+* **actions:** adjust permission issue when push ([79774b3](https://github.com/sws2apps/firebase-deployment/commit/79774b3a1e7a47fd970446c630a9ec115db925f7))
+
 ## [1.3.3](https://github.com/sws2apps/firebase-deployment/compare/v1.3.2...v1.3.3) (2022-06-02)
 
 
