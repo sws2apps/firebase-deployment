@@ -1,3 +1,10 @@
+## [1.3.6](https://github.com/sws2apps/firebase-deployment/compare/v1.3.5...v1.3.6) (2022-06-02)
+
+
+### Bug Fixes
+
+* **semantic-release:** move pushing assets to repository in @semantic-release/git ([7cb60ea](https://github.com/sws2apps/firebase-deployment/commit/7cb60eaafb88903e161df3c361801708f788e503))
+
 ## [1.3.5](https://github.com/sws2apps/firebase-deployment/compare/v1.3.4...v1.3.5) (2022-06-02)
 
 
