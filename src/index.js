@@ -1,10 +1,7 @@
 import core from '@actions/core';
 import exec from '@actions/exec';
 
-const options = {};
-options.cwd = process.env.GITHUB_WORKSPACE;
-
-await exec.exec('npm i -g firebase-tools', [], options);
+await exec.exec('npm i -g firebase-tools');
 
 if (!process.env.FIREBASE_TOKEN) {
 	core.setFailed('Oh... The FIREBASE_TOKEN is missing');
