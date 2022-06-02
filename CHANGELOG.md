@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/sws2apps/firebase-deployment/compare/v1.3.1...v1.3.2) (2022-06-02)
+
+
+### Bug Fixes
+
+* **actions:** deploy distribution folder back to origin ([b344549](https://github.com/sws2apps/firebase-deployment/commit/b344549dd8d54f83b19818bf9cc846171e88d32f))
+
 ## [1.3.1](https://github.com/sws2apps/firebase-deployment/compare/v1.3.0...v1.3.1) (2022-06-02)
 
 
