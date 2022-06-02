@@ -1,3 +1,10 @@
+## [1.3.9](https://github.com/sws2apps/firebase-deployment/compare/v1.3.8...v1.3.9) (2022-06-02)
+
+
+### Bug Fixes
+
+* **semantic-release:** attempt to fix dist not pushed (1) ([435811e](https://github.com/sws2apps/firebase-deployment/commit/435811ea1ff9bf06ba1a579a35a79b4c60881644))
+
 ## [1.3.8](https://github.com/sws2apps/firebase-deployment/compare/v1.3.7...v1.3.8) (2022-06-02)
 
 
