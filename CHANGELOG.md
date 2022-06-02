@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/sws2apps/firebase-deployment/compare/v1.3.2...v1.3.3) (2022-06-02)
+
+
+### Bug Fixes
+
+* **actions:** fix push error ([fc670ae](https://github.com/sws2apps/firebase-deployment/commit/fc670ae00c48c6b9eb80fe389e81d8a045e5d39f))
+
 ## [1.3.2](https://github.com/sws2apps/firebase-deployment/compare/v1.3.1...v1.3.2) (2022-06-02)
 
 
