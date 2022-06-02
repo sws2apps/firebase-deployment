@@ -34,6 +34,15 @@ module.exports = {
 				prepareCmd: 'npm run build',
 			},
 		],
-		'@semantic-release/github',
+		[
+			'@semantic-release/github',
+			{
+				"assets": [
+					{ "path": "dist/index.js" },
+					{ "path": "dist/licenses.txt" },
+					{ "path": "dist/package.json" }
+			     	]
+			}
+		],
 	],
 };
