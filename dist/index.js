@@ -3312,7 +3312,9 @@ if (!process.env.FIREBASE_PROJECT) {
 
 try {
 	await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec(
-		`firebase deploy -m ${process.env.GITHUB_SHA} --project ${process.env.FIREBASE_PROJECT}`
+		`firebase deploy -m ${process.env.GITHUB_SHA} --project ${process.env.FIREBASE_PROJECT}`,
+		[],
+		options
 	);
 } catch (error) {
 	_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(
