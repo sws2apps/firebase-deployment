@@ -4,11 +4,11 @@ import exec from '@actions/exec';
 await exec.exec('npm i -g firebase-tools');
 
 if (!process.env.FIREBASE_TOKEN) {
-	core.setFailed('Oh... The FIREBASE_TOKEN is missing');
+	core.setFailed('The FIREBASE_TOKEN is missing');
 }
 
 if (!process.env.FIREBASE_PROJECT) {
-	core.setFailed('Oh... The FIREBASE_PROJECT is missing');
+	core.setFailed('The FIREBASE_PROJECT is missing');
 }
 
 try {
@@ -19,6 +19,6 @@ try {
 	);
 } catch (error) {
 	core.setFailed(
-		`Oh... An error occured while deploying to Firebase: ${error}`
+		`An error occured while deploying to Firebase: ${error}`
 	);
 }
