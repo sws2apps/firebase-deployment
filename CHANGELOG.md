@@ -1,3 +1,10 @@
+## [1.3.7](https://github.com/sws2apps/firebase-deployment/compare/v1.3.6...v1.3.7) (2022-06-02)
+
+
+### Bug Fixes
+
+* **semantic-release:** update order of actions ([62dd138](https://github.com/sws2apps/firebase-deployment/commit/62dd138fe63a11d0714c3caa7bb870cde2856b9c))
+
 ## [1.3.6](https://github.com/sws2apps/firebase-deployment/compare/v1.3.5...v1.3.6) (2022-06-02)
 
 
