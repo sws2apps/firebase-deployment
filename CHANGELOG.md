@@ -1,3 +1,10 @@
+## [1.3.10](https://github.com/sws2apps/firebase-deployment/compare/v1.3.9...v1.3.10) (2022-06-02)
+
+
+### Bug Fixes
+
+* **index:** made change to trigger new release ([b749a20](https://github.com/sws2apps/firebase-deployment/commit/b749a208b0164af50e512390e7b652655f0b6aa4))
+
 ## [1.3.9](https://github.com/sws2apps/firebase-deployment/compare/v1.3.8...v1.3.9) (2022-06-02)
 
 

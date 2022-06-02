@@ -3303,11 +3303,11 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec('npm i -g firebase-tools');
 
 if (!process.env.FIREBASE_TOKEN) {
-	_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('Oh... The FIREBASE_TOKEN is missing');
+	_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('The FIREBASE_TOKEN is missing');
 }
 
 if (!process.env.FIREBASE_PROJECT) {
-	_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('Oh... The FIREBASE_PROJECT is missing');
+	_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('The FIREBASE_PROJECT is missing');
 }
 
 try {
@@ -3318,7 +3318,7 @@ try {
 	);
 } catch (error) {
 	_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(
-		`Oh... An error occured while deploying to Firebase: ${error}`
+		`An error occured while deploying to Firebase: ${error}`
 	);
 }
 
