@@ -12,11 +12,7 @@ if (!process.env.FIREBASE_PROJECT) {
 }
 
 try {
-	await exec.exec(
-		`firebase deploy -m ${process.env.GITHUB_SHA} --project ${process.env.FIREBASE_PROJECT}`,
-		[],
-		options
-	);
+	await exec.exec(`firebase deploy -m ${process.env.GITHUB_SHA} --project ${process.env.FIREBASE_PROJECT}`);
 } catch (error) {
 	core.setFailed(
 		`An error occured while deploying to Firebase: ${error}`
