@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to Firebase
-        uses: sws2apps/firebase-deployment@[--pin--]
+        uses: sws2apps/firebase-deployment@e6dfe2cb17dbfeecf7910f5c1d4fee2f0c07deb5
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           FIREBASE_PROJECT: ${{ secrets.FIREBASE_PROJECT }}
