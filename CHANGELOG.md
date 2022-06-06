@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/sws2apps/firebase-deployment/compare/v1.3.11...v1.4.0) (2022-06-06)
+
+
+### Features
+
+* **readme:** starting point for pin version is included ([45f5ba6](https://github.com/sws2apps/firebase-deployment/commit/45f5ba64ed0cf0a29fcca7258dba7ff3c1933dcb))
+
 ## [1.3.11](https://github.com/sws2apps/firebase-deployment/compare/v1.3.10...v1.3.11) (2022-06-03)
 
 
