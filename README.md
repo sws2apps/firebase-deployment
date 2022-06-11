@@ -1,3 +1,6 @@
+[![CI](https://github.com/sws2apps/firebase-deployment/actions/workflows/ci.yml/badge.svg)](https://github.com/sws2apps/firebase-deployment/actions/workflows/ci.yml)
+[![CD](https://github.com/sws2apps/firebase-deployment/actions/workflows/publish.yml/badge.svg)](https://github.com/sws2apps/firebase-deployment/actions/workflows/publish.yml)
+
 # Firebase Deployment
 
 A GitHub Action to deploy firebase hosting and functions together.
@@ -20,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to Firebase
-        uses: sws2apps/firebase-deployment@e6dfe2cb17dbfeecf7910f5c1d4fee2f0c07deb5
+        uses: sws2apps/firebase-deployment@v2 #consider using pin for dependabot auto update
         with:
           project: 'my-firebase-project' #required
           config: 'frontend/firebase.json' #optional
