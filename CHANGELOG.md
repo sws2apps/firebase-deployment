@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/sws2apps/firebase-deployment/compare/v1.3.0...v1.3.1) (2022-06-11)
+
+
+### Bug Fixes
+
+* **actions:** restore using input ([dd83750](https://github.com/sws2apps/firebase-deployment/commit/dd8375009565cbcac16f4222a832e8694c04b50f))
+
 # [1.3.0](https://github.com/sws2apps/firebase-deployment/compare/v1.2.2...v1.3.0) (2022-05-22)
 
 
