@@ -1,6 +1,13 @@
-name: Firebase Deployment
-author: Scheduling Workbox System <sws2apps.notification@gmail.com>
-description: A GitHub Action to deploy to Firebase
+name: 'Firebase Deployment'
+author: 'Scheduling Workbox System <sws2apps.notification@gmail.com>'
+description: 'A GitHub Action to deploy to Firebase'
+inputs:
+  project:
+    description: 'Name of the firebase project you will deploy the site'
+    required: true
+  config:
+    description: 'Path to the firebase.json config file'
+    required: false
 runs:
   using: 'node16'
   main: 'dist/index.js'
