@@ -30,6 +30,30 @@
 * **actions:** restore using input ([dd83750](https://github.com/sws2apps/firebase-deployment/commit/dd8375009565cbcac16f4222a832e8694c04b50f))
 
 
+* feat(actions) ([a8f62ef](https://github.com/sws2apps/firebase-deployment/commit/a8f62efc489a72945c30ba0bc04d7704832ed2c0))
+
+
+### Features
+
+* **actions:** force version bumping ([a8538e2](https://github.com/sws2apps/firebase-deployment/commit/a8538e23dcd93b1b1de9ed7c5347ddf13b5ddab6))
+* **actions:** force version bumping ([63cf1fa](https://github.com/sws2apps/firebase-deployment/commit/63cf1fa08a59ef901b0d21891e0cd91be6e989cb))
+* **actions:** force version bumping ([93c7887](https://github.com/sws2apps/firebase-deployment/commit/93c78876a32cfadbd5f0972b2036c99a54665901))
+
+
+### BREAKING CHANGES
+
+* **actions:** force version bumping
+* force version bumping
+* **actions:** force bumping
+
+# [2.0.0](https://github.com/sws2apps/firebase-deployment/compare/v1.3.0...v2.0.0) (2022-06-11)
+
+
+### Bug Fixes
+
+* **actions:** restore using input ([dd83750](https://github.com/sws2apps/firebase-deployment/commit/dd8375009565cbcac16f4222a832e8694c04b50f))
+
+
 ### Features
 
 * **actions:** force version bumping ([63cf1fa](https://github.com/sws2apps/firebase-deployment/commit/63cf1fa08a59ef901b0d21891e0cd91be6e989cb))
