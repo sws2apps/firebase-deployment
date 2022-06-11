@@ -1,0 +1,40 @@
+name: CI
+
+on: [push]
+
+permissions: read-all
+
+jobs:
+  test_actions:
+    name: Test actions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout for testing preparation
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
+
+      - name: Use Node.js current version
+        uses: actions/setup-node@17f8bd926464a1afa4c6a11669539e9c1ba77048
+        with:
+          node-version: current
+
+      - name: Install package dependencies
+        run: npm ci
+
+      - name: Build the actions
+        run: npm run build
+
+      - name: Test actions for simple action
+        uses: ./
+        with:
+          project: github-workflow-sws
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Test actions for monorepo
+        uses: ./
+        with:
+          project: github-workflow-sws
+          config: frontend/firebase.json
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
