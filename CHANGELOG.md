@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/sws2apps/firebase-deployment/compare/v2.0.1...v2.0.2) (2022-06-11)
+
+
+### Bug Fixes
+
+* **readme:** update readme to use number version ([2e4cc06](https://github.com/sws2apps/firebase-deployment/commit/2e4cc06af886bb9a7513cbbef7f9ed23dd948a59))
+
 ## [2.0.1](https://github.com/sws2apps/firebase-deployment/compare/v2.0.0...v2.0.1) (2022-06-11)
 
 
