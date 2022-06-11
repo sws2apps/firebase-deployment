@@ -12,7 +12,7 @@ A GitHub Action to deploy firebase hosting and functions together.
 ## Example Usage
 
 ```yaml
-name: Deploy to Firebase
+name: Deploy to Firebase Hosting
 on:
   push:
     branches:
