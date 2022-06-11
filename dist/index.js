@@ -3289,40 +3289,6 @@ module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("tls");
 
 module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("util");
 
-/***/ }),
-
-/***/ 633:
-/***/ ((__webpack_module__, __unused_webpack___webpack_exports__, __nccwpck_require__) => {
-
-__nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__) => {
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(186);
-/* harmony import */ var _actions_exec__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(514);
-
-
-
-await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec('npm i -g firebase-tools');
-
-if (!process.env.FIREBASE_TOKEN) {
-	_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('Oh... The FIREBASE_TOKEN is missing');
-}
-
-if (!process.env.FIREBASE_PROJECT) {
-	_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('Oh... The FIREBASE_PROJECT is missing');
-}
-
-try {
-	await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec(
-		`firebase deploy -m ${process.env.GITHUB_SHA} --project ${process.env.FIREBASE_PROJECT}`
-	);
-} catch (error) {
-	_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(
-		`Oh... An error occured while deploying to Firebase: ${error}`
-	);
-}
-
-__webpack_handle_async_dependencies__();
-}, 1);
-
 /***/ })
 
 /******/ });
@@ -3358,89 +3324,53 @@ __webpack_handle_async_dependencies__();
 /******/ }
 /******/ 
 /************************************************************************/
-/******/ /* webpack/runtime/async module */
-/******/ (() => {
-/******/ 	var webpackThen = typeof Symbol === "function" ? Symbol("webpack then") : "__webpack_then__";
-/******/ 	var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
-/******/ 	var completeQueue = (queue) => {
-/******/ 		if(queue) {
-/******/ 			queue.forEach((fn) => (fn.r--));
-/******/ 			queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
-/******/ 		}
-/******/ 	}
-/******/ 	var completeFunction = (fn) => (!--fn.r && fn());
-/******/ 	var queueFunction = (queue, fn) => (queue ? queue.push(fn) : completeFunction(fn));
-/******/ 	var wrapDeps = (deps) => (deps.map((dep) => {
-/******/ 		if(dep !== null && typeof dep === "object") {
-/******/ 			if(dep[webpackThen]) return dep;
-/******/ 			if(dep.then) {
-/******/ 				var queue = [];
-/******/ 				dep.then((r) => {
-/******/ 					obj[webpackExports] = r;
-/******/ 					completeQueue(queue);
-/******/ 					queue = 0;
-/******/ 				});
-/******/ 				var obj = {};
-/******/ 											obj[webpackThen] = (fn, reject) => (queueFunction(queue, fn), dep['catch'](reject));
-/******/ 				return obj;
-/******/ 			}
-/******/ 		}
-/******/ 		var ret = {};
-/******/ 							ret[webpackThen] = (fn) => (completeFunction(fn));
-/******/ 							ret[webpackExports] = dep;
-/******/ 							return ret;
-/******/ 	}));
-/******/ 	__nccwpck_require__.a = (module, body, hasAwait) => {
-/******/ 		var queue = hasAwait && [];
-/******/ 		var exports = module.exports;
-/******/ 		var currentDeps;
-/******/ 		var outerResolve;
-/******/ 		var reject;
-/******/ 		var isEvaluating = true;
-/******/ 		var nested = false;
-/******/ 		var whenAll = (deps, onResolve, onReject) => {
-/******/ 			if (nested) return;
-/******/ 			nested = true;
-/******/ 			onResolve.r += deps.length;
-/******/ 			deps.map((dep, i) => (dep[webpackThen](onResolve, onReject)));
-/******/ 			nested = false;
-/******/ 		};
-/******/ 		var promise = new Promise((resolve, rej) => {
-/******/ 			reject = rej;
-/******/ 			outerResolve = () => (resolve(exports), completeQueue(queue), queue = 0);
-/******/ 		});
-/******/ 		promise[webpackExports] = exports;
-/******/ 		promise[webpackThen] = (fn, rejectFn) => {
-/******/ 			if (isEvaluating) { return completeFunction(fn); }
-/******/ 			if (currentDeps) whenAll(currentDeps, fn, rejectFn);
-/******/ 			queueFunction(queue, fn);
-/******/ 			promise['catch'](rejectFn);
-/******/ 		};
-/******/ 		module.exports = promise;
-/******/ 		body((deps) => {
-/******/ 			if(!deps) return outerResolve();
-/******/ 			currentDeps = wrapDeps(deps);
-/******/ 			var fn, result;
-/******/ 			var promise = new Promise((resolve, reject) => {
-/******/ 				fn = () => (resolve(result = currentDeps.map((d) => (d[webpackExports]))));
-/******/ 				fn.r = 0;
-/******/ 				whenAll(currentDeps, fn, reject);
-/******/ 			});
-/******/ 			return fn.r ? promise : result;
-/******/ 		}).then(outerResolve, reject);
-/******/ 		isEvaluating = false;
-/******/ 	};
-/******/ })();
-/******/ 
 /******/ /* webpack/runtime/compat */
 /******/ 
 /******/ if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = new URL('.', import.meta.url).pathname.slice(import.meta.url.match(/^file:\/\/\/\w:/) ? 1 : 0, -1) + "/";
 /******/ 
 /************************************************************************/
-/******/ 
-/******/ // startup
-/******/ // Load entry module and return exports
-/******/ // This entry module used 'module' so it can't be inlined
-/******/ var __webpack_exports__ = __nccwpck_require__(633);
-/******/ __webpack_exports__ = await __webpack_exports__;
-/******/ 
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(186);
+/* harmony import */ var _actions_exec__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(514);
+// dependencies
+
+
+
+const run = async () => {
+	try {
+		// preflight check before starting the actions
+		const project = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('project');
+		if (!project) {
+			_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('The Firebase project is missing from the worflow file');
+			return;
+		}
+
+		if (!process.env.FIREBASE_TOKEN) {
+			_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('The FIREBASE_TOKEN is missing');
+			return;
+		}
+
+		// get if we receive a custom path for firebase.json
+		const config = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('config');
+
+		// installing firebase tools
+		await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec('npm i -g firebase-tools');
+
+		// attempt to run firebase deploy, and throw an error if failed
+
+		await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec(
+			`firebase deploy -m ${process.env.GITHUB_SHA} ${
+				config ? `--config ${config}` : ''
+			} --project ${project}`
+		);
+	} catch (error) {
+		_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(`An error occured while deploying to Firebase: ${error}`);
+	}
+};
+
+run();
+
+})();
+

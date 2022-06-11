@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/sws2apps/firebase-deployment/compare/v2.0.0...v2.0.1) (2022-06-11)
+
+
+### Bug Fixes
+
+* **semantic-release:** update config to include dist folder ([29b42b9](https://github.com/sws2apps/firebase-deployment/commit/29b42b9f4082d31edeb4a02dc67effff4a353562))
+
 # [2.0.0](https://github.com/sws2apps/firebase-deployment/compare/v1.3.0...v2.0.0) (2022-06-11)
 
 
