@@ -9,7 +9,7 @@ A GitHub Action to deploy firebase hosting and functions together.
 - Set the project name in the `project` input.
 - Get the Firebase token by running `firebase login:ci` and [store it](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) as the `FIREBASE_TOKEN` secret
 
-## Example Usage
+## Example Usages
 
 ```yaml
 name: Deploy to Firebase
