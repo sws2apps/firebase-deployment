@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to Firebase
-        uses: sws2apps/firebase-deployment@v2 #consider using pin for dependabot auto update
+        uses: sws2apps/firebase-deployment@main #consider using pin for dependabot auto update
         with:
           project: 'my-firebase-project' #required
           config: 'frontend/firebase.json' #optional
