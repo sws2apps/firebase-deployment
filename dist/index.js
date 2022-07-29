@@ -3352,8 +3352,15 @@ const run = async () => {
 			return;
 		}
 
-		// get if we receive a custom path for firebase.json
+		// check if we receive a custom path for firebase.json
 		const config = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('config');
+
+		// check only deployment settings
+		let deployOnly = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('function') === 'true' ? 'function' : '';
+		deployOnly +=
+			_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('hosting') === 'true'
+				? `${deployOnly !== '' ? ' ' : ''}hosting`
+				: '';
 
 		// installing firebase tools
 		await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec('npm i -g firebase-tools');
@@ -3363,10 +3370,26 @@ const run = async () => {
 		await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec(
 			`firebase deploy -m ${process.env.GITHUB_SHA} ${
 				config ? `--config ${config}` : ''
-			} --project ${project}`
+			} --project ${project} ${
+				deployOnly !== '' ? ` --only ${deployOnly}` : ''
+			}`
 		);
 	} catch (error) {
-		_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(`An error occured while deploying to Firebase: ${error}`);
+		_actions_core__WEBPACK_IMPORTED_MODULE_0__.error(
+			`An error occured while deploying to Firebase: ${error}. Retrying with debug mode enabled ...`
+		);
+
+		try {
+			await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec(
+				`firebase deploy -m ${process.env.GITHUB_SHA} ${
+					config ? `--config ${config}` : ''
+				} --project ${project} ${
+					deployOnly !== '' ? ` --only ${deployOnly}` : ''
+				} --debug`
+			);
+		} catch (error) {
+			_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(`An error occured while deploying to Firebase: ${error}`);
+		}
 	}
 };
 

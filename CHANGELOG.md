@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/sws2apps/firebase-deployment/compare/v2.0.3...v2.1.0) (2022-07-29)
+
+
+### Features
+
+* **actions:** add additional arguments and retry with debug enabled ([c5990e6](https://github.com/sws2apps/firebase-deployment/commit/c5990e60cbf477f12c61046c46f8039da1725afa))
+
 ## [2.0.3](https://github.com/sws2apps/firebase-deployment/compare/v2.0.2...v2.0.3) (2022-07-11)
 
 
