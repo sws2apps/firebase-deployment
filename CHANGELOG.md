@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/sws2apps/firebase-deployment/compare/v2.0.2...v2.0.3) (2022-07-11)
+
+
+### Bug Fixes
+
+* **actions:** no changes, docs update in readme to target main branch ([d4d8d3d](https://github.com/sws2apps/firebase-deployment/commit/d4d8d3d8629c9dd7cb03c37b9b4576e5e4375dc4))
+
 ## [2.0.2](https://github.com/sws2apps/firebase-deployment/compare/v2.0.1...v2.0.2) (2022-06-11)
 
 
