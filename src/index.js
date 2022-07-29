@@ -16,8 +16,15 @@ const run = async () => {
 			return;
 		}
 
-		// get if we receive a custom path for firebase.json
+		// check if we receive a custom path for firebase.json
 		const config = core.getInput('config');
+
+		// check only deployment settings
+		let deployOnly = core.getInput('function') === 'true' ? 'function' : '';
+		deployOnly +=
+			core.getInput('hosting') === 'true'
+				? `${deployOnly !== '' ? ' ' : ''}hosting`
+				: '';
 
 		// installing firebase tools
 		await exec.exec('npm i -g firebase-tools');
@@ -27,10 +34,26 @@ const run = async () => {
 		await exec.exec(
 			`firebase deploy -m ${process.env.GITHUB_SHA} ${
 				config ? `--config ${config}` : ''
-			} --project ${project}`
+			} --project ${project} ${
+				deployOnly !== '' ? ` --only ${deployOnly}` : ''
+			}`
 		);
 	} catch (error) {
-		core.setFailed(`An error occured while deploying to Firebase: ${error}`);
+		core.error(
+			`An error occured while deploying to Firebase: ${error}. Retrying with debug mode enabled ...`
+		);
+
+		try {
+			await exec.exec(
+				`firebase deploy -m ${process.env.GITHUB_SHA} ${
+					config ? `--config ${config}` : ''
+				} --project ${project} ${
+					deployOnly !== '' ? ` --only ${deployOnly}` : ''
+				} --debug`
+			);
+		} catch (error) {
+			core.setFailed(`An error occured while deploying to Firebase: ${error}`);
+		}
 	}
 };
 
