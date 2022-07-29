@@ -38,3 +38,11 @@ jobs:
           config: frontend/firebase.json
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Test actions for with arguments
+        uses: ./
+        with:
+          project: github-workflow-sws
+          hosting: true
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

@@ -8,6 +8,12 @@ inputs:
   config:
     description: 'Path to the firebase.json config file'
     required: false
+  function:
+    description: 'Deploy only firebase functions'
+    required: false
+  hosting:
+    description: 'Deploy only hosting site'
+    required: false
 runs:
   using: 'node16'
   main: 'dist/index.js'

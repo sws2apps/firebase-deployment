@@ -25,8 +25,10 @@ jobs:
       - name: Deploy to Firebase
         uses: sws2apps/firebase-deployment@main #consider using pin for dependabot auto update
         with:
-          project: 'my-firebase-project' #required
           config: 'frontend/firebase.json' #optional
+          function: true #optional & boolean
+          hosting: true #optional & boolean
+          project: 'my-firebase-project' #required
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 ```
