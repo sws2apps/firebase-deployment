@@ -29,7 +29,6 @@ jobs:
         with:
           project: github-workflow-sws
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_DEPLOYMENT_GAC }}
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
       - name: Test actions for monorepo
