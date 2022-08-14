@@ -10,11 +10,6 @@ const run = async () => {
 		return;
 	}
 
-	if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-		core.setFailed('The GOOGLE_APPLICATION_CREDENTIALS is missing');
-		return;
-	}
-
 	// check if we receive a custom path for firebase.json
 	const config = core.getInput('config');
 
