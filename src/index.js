@@ -11,8 +11,8 @@ const run = async () => {
 			return;
 		}
 
-		if (!process.env.FIREBASE_TOKEN) {
-			core.setFailed('The FIREBASE_TOKEN is missing');
+		if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+			core.setFailed('The GOOGLE_APPLICATION_CREDENTIALS is missing');
 			return;
 		}
 
