@@ -29,7 +29,7 @@ jobs:
         with:
           project: github-workflow-sws
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_DEPLOYMENT_GAC }}
 
       - name: Test actions for monorepo
         uses: ./
@@ -37,7 +37,7 @@ jobs:
           project: github-workflow-sws
           config: frontend/firebase.json
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_DEPLOYMENT_GAC }}
 
       - name: Test actions for with arguments
         uses: ./
@@ -45,4 +45,4 @@ jobs:
           project: github-workflow-sws
           hosting: true
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_DEPLOYMENT_GAC }}
