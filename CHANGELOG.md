@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/sws2apps/firebase-deployment/compare/v2.1.0...v2.1.1) (2022-08-14)
+
+
+### Bug Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([df1de40](https://github.com/sws2apps/firebase-deployment/commit/df1de40bc55362226b1f2ce3eab9cc25dbc3dc82))
+
 # [2.1.0](https://github.com/sws2apps/firebase-deployment/compare/v2.0.3...v2.1.0) (2022-07-29)
 
 
