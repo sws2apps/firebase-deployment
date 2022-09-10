@@ -1,3 +1,15 @@
+# [2.2.0](https://github.com/sws2apps/firebase-deployment/compare/v2.1.1...v2.2.0) (2022-09-10)
+
+
+### Features
+
+* **deps:** bump @vercel/ncc from 0.33.4 to 0.34.0 ([078a586](https://github.com/sws2apps/firebase-deployment/commit/078a586ccce721946028acc35f887a2688c54a37))
+
+
+### Reverts
+
+* Revert "chore(ci): test new credentials" ([cb1a18e](https://github.com/sws2apps/firebase-deployment/commit/cb1a18ecb336256ac5cc2551e627330abb1d7927))
+
 ## [2.1.1](https://github.com/sws2apps/firebase-deployment/compare/v2.1.0...v2.1.1) (2022-08-14)
 
 
