@@ -1,7 +1,7 @@
 {
   "name": "firebase-deployment",
   "description": "A GitHub Action to deploy firebase hosting and functions together.",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "private": true,
   "type": "module",
   "homepage": "https://github.com/sws2apps/firebase-deployment#readme",
@@ -22,7 +22,7 @@
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@vercel/ncc": "^0.33.4"
+    "@vercel/ncc": "^0.34.0"
   },
   "dependencies": {
     "@actions/core": "^1.9.1",
