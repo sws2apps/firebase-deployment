@@ -23,26 +23,3 @@ jobs:
 
       - name: Build the actions
         run: npm run build
-
-      - name: Test actions for simple action
-        uses: ./
-        with:
-          project: github-workflow-sws
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-
-      - name: Test actions for monorepo
-        uses: ./
-        with:
-          project: github-workflow-sws
-          config: frontend/firebase.json
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-
-      - name: Test actions for with arguments
-        uses: ./
-        with:
-          project: github-workflow-sws
-          hosting: true
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}

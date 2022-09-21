@@ -34,21 +34,7 @@ const run = async () => {
 			}`
 		);
 	} catch (error) {
-		core.error(
-			`An error occured while deploying to Firebase: ${error}. Retrying with debug mode enabled ...`
-		);
-
-		try {
-			await exec.exec(
-				`firebase deploy -m ${process.env.GITHUB_SHA} ${
-					config ? `--config ${config}` : ''
-				} --project ${project} ${
-					deployOnly !== '' ? ` --only ${deployOnly}` : ''
-				} --debug`
-			);
-		} catch (error) {
-			core.setFailed(`An error occured while deploying to Firebase: ${error}`);
-		}
+		core.error(`An error occured while deploying to Firebase: ${error}`);
 	}
 };
 
