@@ -24,25 +24,25 @@ jobs:
       - name: Build the actions
         run: npm run build
 
-      - id: 'auth'
-        name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@ceee102ec2387dd9e844e01b530ccd4ec87ce955'
-        with:
-          credentials_json: ${{ secrets.FIREBASE_DEPLOYMENT_GAC }}
-
       - name: Test actions for simple action
         uses: ./
         with:
           project: github-workflow-sws
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
       - name: Test actions for monorepo
         uses: ./
         with:
           project: github-workflow-sws
           config: frontend/firebase.json
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
       - name: Test actions for with arguments
         uses: ./
         with:
           project: github-workflow-sws
           hosting: true
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
