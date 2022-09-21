@@ -7,8 +7,8 @@ A GitHub Action to deploy firebase hosting and functions together.
 
 - Make sure you have the `firebase.json` file in the root repository, or set a custom path to look for it using the `config` input.
 - Set the project name in the `project` input.
-- Get a Service Account in JSON format by following the [Google Cloud's Getting started](https://cloud.google.com/docs/authentication/getting-started) guide. Stringify the JSON content and the `GOOGLE_APPLICATION_CREDENTIALS` in your repository
-- **DEPRECATED: We will remove this authentication method when the Firebase CLI no longer supports it.** Get the Firebase token by running `firebase login:ci` and [store it](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) as the `FIREBASE_TOKEN` secret
+- Get a Service Account in JSON format by following the [Google Cloud's Getting started](https://cloud.google.com/docs/authentication/getting-started) guide. Stringify the JSON content and [store it](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) as the `GOOGLE_APPLICATION_CREDENTIALS` secret in your repository.
+- **DEPRECATED: We will remove this authentication method when the Firebase CLI no longer supports it.** Get the Firebase token by running `firebase login:ci` and [store it](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) as the `FIREBASE_TOKEN` secret.
 
 ## Example Usage
 
