@@ -1,7 +1,7 @@
 {
   "name": "firebase-deployment",
   "description": "A GitHub Action to deploy firebase hosting and functions together.",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "private": true,
   "type": "module",
   "homepage": "https://github.com/sws2apps/firebase-deployment#readme",

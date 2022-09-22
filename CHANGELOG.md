@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/sws2apps/firebase-deployment/compare/v2.2.0...v2.2.1) (2022-09-21)
+
+
+### Bug Fixes
+
+* **readme:** no changes, updating docs for GOOGLE_APPLICATION_CREDENTIALS authentication ([87d6702](https://github.com/sws2apps/firebase-deployment/commit/87d6702ad5328c94a6832bda4a897723b95a5683))
+
 # [2.2.0](https://github.com/sws2apps/firebase-deployment/compare/v2.1.1...v2.2.0) (2022-09-10)
 
 

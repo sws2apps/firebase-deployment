@@ -4056,29 +4056,24 @@ var __webpack_exports__ = {};
 
 
 const run = async () => {
+	// preflight check before starting the actions
+	const project = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('project');
+	if (!project) {
+		_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('The Firebase project is missing from the worflow file');
+		return;
+	}
+
+	// check if we receive a custom path for firebase.json
+	const config = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('config');
+
+	// check only deployment settings
+	let deployOnly = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('function') === 'true' ? 'function' : '';
+	deployOnly +=
+		_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('hosting') === 'true'
+			? `${deployOnly !== '' ? ' ' : ''}hosting`
+			: '';
+
 	try {
-		// preflight check before starting the actions
-		const project = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('project');
-		if (!project) {
-			_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('The Firebase project is missing from the worflow file');
-			return;
-		}
-
-		if (!process.env.FIREBASE_TOKEN) {
-			_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('The FIREBASE_TOKEN is missing');
-			return;
-		}
-
-		// check if we receive a custom path for firebase.json
-		const config = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('config');
-
-		// check only deployment settings
-		let deployOnly = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('function') === 'true' ? 'function' : '';
-		deployOnly +=
-			_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('hosting') === 'true'
-				? `${deployOnly !== '' ? ' ' : ''}hosting`
-				: '';
-
 		// installing firebase tools
 		await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec('npm i -g firebase-tools');
 
@@ -4092,21 +4087,7 @@ const run = async () => {
 			}`
 		);
 	} catch (error) {
-		_actions_core__WEBPACK_IMPORTED_MODULE_0__.error(
-			`An error occured while deploying to Firebase: ${error}. Retrying with debug mode enabled ...`
-		);
-
-		try {
-			await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec(
-				`firebase deploy -m ${process.env.GITHUB_SHA} ${
-					config ? `--config ${config}` : ''
-				} --project ${project} ${
-					deployOnly !== '' ? ` --only ${deployOnly}` : ''
-				} --debug`
-			);
-		} catch (error) {
-			_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(`An error occured while deploying to Firebase: ${error}`);
-		}
+		_actions_core__WEBPACK_IMPORTED_MODULE_0__.error(`An error occured while deploying to Firebase: ${error}`);
 	}
 };
 
