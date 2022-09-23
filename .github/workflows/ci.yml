@@ -22,23 +22,22 @@ jobs:
         with:
           node-version: current
 
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
       - name: Install package dependencies
         run: npm ci
 
       - name: Build the actions
         run: npm run build
 
-      - id: 'auth'
-        name: 'Authenticate to Google Cloud'
+      - name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v0'
         with:
           workload_identity_provider: 'projects/1059783069358/locations/global/workloadIdentityPools/github-pool/providers/github-action-provider'
           service_account: 'github-workflow-sws@github-workflow-sws.iam.gserviceaccount.com'
-          export_environment_variables: false
 
       - name: Test actions for simple action
         uses: ./
         with:
           project: github-workflow-sws
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: '${{ steps.auth.outputs.credentials_file_path }}'
