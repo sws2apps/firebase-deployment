@@ -9,6 +9,10 @@ jobs:
     name: Test actions
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     steps:
       - name: Checkout for testing preparation
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
@@ -23,3 +27,15 @@ jobs:
 
       - name: Build the actions
         run: npm run build
+
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          workload_identity_provider: 'projects/1059783069358/locations/global/workloadIdentityPools/github-pool/providers/github-action-provider'
+          service_account: 'github-workflow-sws@github-workflow-sws.iam.gserviceaccount.com'
+
+       - name: Test actions for simple action
+        uses: ./
+        with:
+          project: github-workflow-sws

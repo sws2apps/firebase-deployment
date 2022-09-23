@@ -1,5 +1,5 @@
 // dependencies
-import 'dotenv/config'
+import 'dotenv/config';
 import core from '@actions/core';
 import exec from '@actions/exec';
 
@@ -35,7 +35,7 @@ const run = async () => {
 			}`
 		);
 	} catch (error) {
-		core.error(`An error occured while deploying to Firebase: ${error}`);
+		core.setFailed(`An error occured while deploying to Firebase: ${error}`);
 	}
 };
 
