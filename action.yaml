@@ -39,6 +39,11 @@ runs:
         service_account: ${{ inputs.serviceAccount }}
 
     - name: Run Deployment
+      with:
+        project: ${{ inputs.project }}
+        config: ${{ inputs.config }}
+        function: ${{ inputs.function }}
+        hosting: ${{ inputs.hosting }}
       run: node dist/index.js
       shell: bash
 
