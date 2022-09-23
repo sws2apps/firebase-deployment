@@ -25,8 +25,8 @@ jobs:
       - name: Deploy to Firebase
         uses: sws2apps/firebase-deployment@main #consider using pin for dependabot auto update
         with:
-          workloadIdentityProvider: 'projects/1059783069358/locations/global/workloadIdentityPools/github-pool/providers/github-action-provider' #it is not a security issue to use it directly here
-          serviceAccount: 'github-workflow-sws@github-workflow-sws.iam.gserviceaccount.com' #it is not a security issue to use it directly here
+          workloadIdentityProvider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          serviceAccount: ${{ secrets.SERVICE_ACCOUNT }}
           project: github-workflow-sws
           config: 'frontend/firebase.json' #optional
           function: true #optional & boolean
