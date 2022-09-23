@@ -13,14 +13,23 @@ A GitHub Action to deploy firebase hosting and functions together.
 
 ```yaml
 name: Deploy to Firebase
+
 on:
   push:
     branches:
       - main
+
+permissions: read-all
+
 jobs:
   main:
     name: Build and Deploy
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     steps:
       - name: Deploy to Firebase
         uses: sws2apps/firebase-deployment@main #consider using pin for dependabot auto update
