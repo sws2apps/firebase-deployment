@@ -31,6 +31,6 @@ jobs:
       - name: Test actions for simple action
         uses: ./
         with:
-          workloadIdentityProvider: 'projects/1059783069358/locations/global/workloadIdentityPools/github-pool/providers/github-action-provider'
-          serviceAccount: 'github-workflow-sws@github-workflow-sws.iam.gserviceaccount.com'
+          workloadIdentityProvider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          serviceAccount: ${{ secrets.SERVICE_ACCOUNT }}
           project: github-workflow-sws

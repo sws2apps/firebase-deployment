@@ -30,6 +30,7 @@ runs:
 
     - name: Install Firebase CLI
       run: npm install -g firebase-tools
+      shell: bash
 
     - name: 'Authenticate to Google Cloud'
       uses: 'google-github-actions/auth@v0'
@@ -38,7 +39,13 @@ runs:
         service_account: ${{ inputs.serviceAccount }}
 
     - name: Run Deployment
+      env:
+        project: ${{ inputs.project }}
+        config: ${{ inputs.config }}
+        function: ${{ inputs.function }}
+        hosting: ${{ inputs.hosting }}
       run: node dist/index.js
+      shell: bash
 
 branding:
   icon: 'upload-cloud'
