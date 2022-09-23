@@ -3000,183 +3000,6 @@ function copyFile(srcFile, destFile, force) {
 
 /***/ }),
 
-/***/ 227:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
-
-(function () {
-  (__nccwpck_require__(437).config)(
-    Object.assign(
-      {},
-      __nccwpck_require__(158),
-      __nccwpck_require__(478)(process.argv)
-    )
-  )
-})()
-
-
-/***/ }),
-
-/***/ 478:
-/***/ ((module) => {
-
-const re = /^dotenv_config_(encoding|path|debug|override)=(.+)$/
-
-module.exports = function optionMatcher (args) {
-  return args.reduce(function (acc, cur) {
-    const matches = cur.match(re)
-    if (matches) {
-      acc[matches[1]] = matches[2]
-    }
-    return acc
-  }, {})
-}
-
-
-/***/ }),
-
-/***/ 158:
-/***/ ((module) => {
-
-// ../config.js accepts options via environment variables
-const options = {}
-
-if (process.env.DOTENV_CONFIG_ENCODING != null) {
-  options.encoding = process.env.DOTENV_CONFIG_ENCODING
-}
-
-if (process.env.DOTENV_CONFIG_PATH != null) {
-  options.path = process.env.DOTENV_CONFIG_PATH
-}
-
-if (process.env.DOTENV_CONFIG_DEBUG != null) {
-  options.debug = process.env.DOTENV_CONFIG_DEBUG
-}
-
-if (process.env.DOTENV_CONFIG_OVERRIDE != null) {
-  options.override = process.env.DOTENV_CONFIG_OVERRIDE
-}
-
-module.exports = options
-
-
-/***/ }),
-
-/***/ 437:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const fs = __nccwpck_require__(147)
-const path = __nccwpck_require__(17)
-const os = __nccwpck_require__(37)
-
-const LINE = /(?:^|^)\s*(?:export\s+)?([\w.-]+)(?:\s*=\s*?|:\s+?)(\s*'(?:\\'|[^'])*'|\s*"(?:\\"|[^"])*"|\s*`(?:\\`|[^`])*`|[^#\r\n]+)?\s*(?:#.*)?(?:$|$)/mg
-
-// Parser src into an Object
-function parse (src) {
-  const obj = {}
-
-  // Convert buffer to string
-  let lines = src.toString()
-
-  // Convert line breaks to same format
-  lines = lines.replace(/\r\n?/mg, '\n')
-
-  let match
-  while ((match = LINE.exec(lines)) != null) {
-    const key = match[1]
-
-    // Default undefined or null to empty string
-    let value = (match[2] || '')
-
-    // Remove whitespace
-    value = value.trim()
-
-    // Check if double quoted
-    const maybeQuote = value[0]
-
-    // Remove surrounding quotes
-    value = value.replace(/^(['"`])([\s\S]*)\1$/mg, '$2')
-
-    // Expand newlines if double quoted
-    if (maybeQuote === '"') {
-      value = value.replace(/\\n/g, '\n')
-      value = value.replace(/\\r/g, '\r')
-    }
-
-    // Add to object
-    obj[key] = value
-  }
-
-  return obj
-}
-
-function _log (message) {
-  console.log(`[dotenv][DEBUG] ${message}`)
-}
-
-function _resolveHome (envPath) {
-  return envPath[0] === '~' ? path.join(os.homedir(), envPath.slice(1)) : envPath
-}
-
-// Populates process.env from .env file
-function config (options) {
-  let dotenvPath = path.resolve(process.cwd(), '.env')
-  let encoding = 'utf8'
-  const debug = Boolean(options && options.debug)
-  const override = Boolean(options && options.override)
-
-  if (options) {
-    if (options.path != null) {
-      dotenvPath = _resolveHome(options.path)
-    }
-    if (options.encoding != null) {
-      encoding = options.encoding
-    }
-  }
-
-  try {
-    // Specifying an encoding returns a string instead of a buffer
-    const parsed = DotenvModule.parse(fs.readFileSync(dotenvPath, { encoding }))
-
-    Object.keys(parsed).forEach(function (key) {
-      if (!Object.prototype.hasOwnProperty.call(process.env, key)) {
-        process.env[key] = parsed[key]
-      } else {
-        if (override === true) {
-          process.env[key] = parsed[key]
-        }
-
-        if (debug) {
-          if (override === true) {
-            _log(`"${key}" is already defined in \`process.env\` and WAS overwritten`)
-          } else {
-            _log(`"${key}" is already defined in \`process.env\` and was NOT overwritten`)
-          }
-        }
-      }
-    })
-
-    return { parsed }
-  } catch (e) {
-    if (debug) {
-      _log(`Failed to load ${dotenvPath} ${e.message}`)
-    }
-
-    return { error: e }
-  }
-}
-
-const DotenvModule = {
-  config,
-  parse
-}
-
-module.exports.config = DotenvModule.config
-module.exports.parse = DotenvModule.parse
-module.exports = DotenvModule
-
-
-/***/ }),
-
 /***/ 294:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -4226,39 +4049,33 @@ module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("util");
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/* harmony import */ var dotenv_config__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(227);
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(186);
-/* harmony import */ var _actions_exec__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(514);
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(186);
+/* harmony import */ var _actions_exec__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(514);
 // dependencies
-
 
 
 
 const run = async () => {
 	// preflight check before starting the actions
-	const project = _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('project');
+	const project = process.env.project;
 	if (!project) {
-		_actions_core__WEBPACK_IMPORTED_MODULE_1__.setFailed('The Firebase project is missing from the worflow file');
+		_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('The Firebase project is missing from the worflow file');
 		return;
 	}
 
 	// check if we receive a custom path for firebase.json
-	const config = _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('config');
+	const config = process.env.config;
 
 	// check only deployment settings
-	let deployOnly = _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('function') === 'true' ? 'function' : '';
+	let deployOnly = process.env.function === 'true' ? 'function' : '';
 	deployOnly +=
-		_actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('hosting') === 'true'
+		process.env.hosting === 'true'
 			? `${deployOnly !== '' ? ' ' : ''}hosting`
 			: '';
 
 	try {
-		// installing firebase tools
-		await _actions_exec__WEBPACK_IMPORTED_MODULE_2__.exec('npm i -g firebase-tools');
-
 		// attempt to run firebase deploy, and throw an error if failed
-
-		await _actions_exec__WEBPACK_IMPORTED_MODULE_2__.exec(
+		await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec(
 			`firebase deploy -m ${process.env.GITHUB_SHA} ${
 				config ? `--config ${config}` : ''
 			} --project ${project} ${
@@ -4266,7 +4083,7 @@ const run = async () => {
 			}`
 		);
 	} catch (error) {
-		_actions_core__WEBPACK_IMPORTED_MODULE_1__.error(`An error occured while deploying to Firebase: ${error}`);
+		_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(`An error occured while deploying to Firebase: ${error}`);
 	}
 };
 
