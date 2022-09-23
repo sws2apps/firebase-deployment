@@ -1,5 +1,4 @@
 // dependencies
-import 'dotenv/config';
 import core from '@actions/core';
 import exec from '@actions/exec';
 
@@ -22,11 +21,7 @@ const run = async () => {
 			: '';
 
 	try {
-		// installing firebase tools
-		await exec.exec('npm i -g firebase-tools');
-
 		// attempt to run firebase deploy, and throw an error if failed
-
 		await exec.exec(
 			`firebase deploy -m ${process.env.GITHUB_SHA} ${
 				config ? `--config ${config}` : ''
