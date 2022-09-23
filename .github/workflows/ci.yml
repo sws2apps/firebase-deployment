@@ -9,6 +9,10 @@ jobs:
     name: Test actions
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     steps:
       - name: Checkout for testing preparation
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
@@ -23,3 +27,10 @@ jobs:
 
       - name: Build the actions
         run: npm run build
+
+      - name: Test actions for simple action
+        uses: ./
+        with:
+          workloadIdentityProvider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          serviceAccount: ${{ secrets.SERVICE_ACCOUNT }}
+          project: github-workflow-sws
