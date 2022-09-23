@@ -28,13 +28,12 @@ const run = async () => {
 		// attempt to run firebase deploy, and throw an error if failed
 		console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS)
 		await exec.exec(
-			'firebase deploy',
-			[
-				`-m ${process.env.GITHUB_SHA}`,
-				`--project ${project}`,
-				`${	config ? `--config ${config}` : '' }`,
-				`${ deployOnly !== '' ? `--only ${deployOnly}` : '' }`
-			],
+			`firebase deploy -m ${process.env.GITHUB_SHA} ${
+				config ? `--config ${config}` : ''
+			} --project ${project} ${
+				deployOnly !== '' ? ` --only ${deployOnly}` : ''
+			}`,
+			[],
 			{
 				env: {
 					GOOGLE_APPLICATION_CREDENTIALS: process.env.GOOGLE_APPLICATION_CREDENTIALS
