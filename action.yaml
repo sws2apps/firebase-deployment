@@ -2,6 +2,12 @@ name: 'Firebase Deployment'
 author: 'Scheduling Workbox System <sws2apps.notification@gmail.com>'
 description: 'A GitHub Action to deploy to Firebase'
 inputs:
+  workloadIdentityProvider:
+    description: 'The full identifier of the Workload Identity Provider, including the project number, pool name, and provider name. This must be the full identifier which includes all parts'
+    required: true
+  serviceAccount:
+    description: 'Email address or unique identifier of the Google Cloud service account for which to generate credentials'
+    required: true
   project:
     description: 'Name of the firebase project you will deploy the site'
     required: true
@@ -15,8 +21,25 @@ inputs:
     description: 'Deploy only hosting site'
     required: false
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: 'composite'
+  steps:
+    - name: Use Node.js current version
+      uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93
+      with:
+        node-version: current
+
+    - name: Install Firebase CLI
+      run: npm install -g firebase-tools
+
+    - name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        workload_identity_provider: ${{ inputs.workloadIdentityProvider }}
+        service_account: ${{ inputs.serviceAccount }}
+
+    - name: Run Deployment
+      run: node dist/index.js
+
 branding:
   icon: 'upload-cloud'
   color: 'purple'
