@@ -1,7 +1,8 @@
 # [3.0.0](https://github.com/sws2apps/firebase-deployment/compare/v2.2.2...v3.0.0) (2022-09-23)
 
+### Features
 
-* feat(action)!: authentication only using workload identity federation ([9441792](https://github.com/sws2apps/firebase-deployment/commit/9441792cef2bf6767126a24e87282f5234f6bec1))
+* **action:** authentication only using workload identity federation ([9441792](https://github.com/sws2apps/firebase-deployment/commit/9441792cef2bf6767126a24e87282f5234f6bec1))
 
 
 ### BREAKING CHANGES
