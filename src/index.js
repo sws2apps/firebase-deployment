@@ -1,5 +1,4 @@
 // dependencies
-import 'dotenv/config';
 import core from '@actions/core';
 import exec from '@actions/exec';
 
@@ -26,19 +25,12 @@ const run = async () => {
 		await exec.exec('npm i -g firebase-tools');
 
 		// attempt to run firebase deploy, and throw an error if failed
-		console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS)
 		await exec.exec(
 			`firebase deploy -m ${process.env.GITHUB_SHA} ${
 				config ? `--config ${config}` : ''
 			} --project ${project} ${
 				deployOnly !== '' ? ` --only ${deployOnly}` : ''
-			}`,
-			[],
-			{
-				env: {
-					GOOGLE_APPLICATION_CREDENTIALS: process.env.GOOGLE_APPLICATION_CREDENTIALS
-				}
-			}
+			}`
 		);
 	} catch (error) {
 		core.setFailed(`An error occured while deploying to Firebase: ${error}`);
