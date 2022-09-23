@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/sws2apps/firebase-deployment/compare/v2.2.1...v2.2.2) (2022-09-23)
+
+
+### Bug Fixes
+
+* **deps:** env to authenticate is not loaded ([c22ae29](https://github.com/sws2apps/firebase-deployment/commit/c22ae29452ef365e48caeb115342a70772100a42))
+
 ## [2.2.1](https://github.com/sws2apps/firebase-deployment/compare/v2.2.0...v2.2.1) (2022-09-21)
 
 
