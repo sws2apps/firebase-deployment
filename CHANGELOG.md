@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/sws2apps/firebase-deployment/compare/v3.0.0...v3.0.1) (2022-09-24)
+
+
+### Bug Fixes
+
+* **action:** add github action path ([8ba8508](https://github.com/sws2apps/firebase-deployment/commit/8ba8508447f5096b5811adbebac9dd117c9e799f))
+
 # [3.0.0](https://github.com/sws2apps/firebase-deployment/compare/v2.2.2...v3.0.0) (2022-09-23)
 
 ### Features
