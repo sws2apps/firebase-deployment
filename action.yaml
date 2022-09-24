@@ -44,7 +44,7 @@ runs:
         config: ${{ inputs.config }}
         function: ${{ inputs.function }}
         hosting: ${{ inputs.hosting }}
-      run: node dist/index.js
+      run: node ${{github.action_path}}/dist/index.js
       shell: bash
 
 branding:
