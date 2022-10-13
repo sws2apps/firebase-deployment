@@ -6,7 +6,7 @@
 A GitHub Action to deploy firebase hosting and functions together.
 
 - Make sure you have the `firebase.json` file in the root repository, or set a custom path to look for it using the `config` input.
-- Set the `workloadIdentityProvider` and `serviceAccount` inputs to authenticate to Google Cloud. Create these values by following the guides on [Setting up Workload Identity Federation](https://github.com/google-github-actions/auth#setting-up-workload-identity-federation)
+- Set the `workloadIdentityProvider` and `serviceAccount` inputs to authenticate to Google Cloud. Create these values by following the guides on [Setting up Workload Identity Federation](https://github.com/google-github-actions/auth#setting-up-workload-identity-federation). Alternatively, you can try using the CLI [@sws2apps/github-gcloud-cli](https://www.npmjs.com/package/@sws2apps/github-gcloud-cli) to automate the creation of these values.
 - Set the project name in the `project` input.
 
 ## Example Usage
