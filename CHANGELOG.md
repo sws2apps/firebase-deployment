@@ -1,3 +1,13 @@
+# [3.1.0](https://github.com/sws2apps/firebase-deployment/compare/v3.0.1...v3.1.0) (2023-02-17)
+
+
+### Features
+
+* **deps:** bump @actions/core from 1.9.1 to 1.10.0 ([94ebd91](https://github.com/sws2apps/firebase-deployment/commit/94ebd91804fd9e1d60e47cc650b33fa2bf6ae600))
+* **deps:** bump @semantic-release/changelog from 6.0.1 to 6.0.2 ([01cf92a](https://github.com/sws2apps/firebase-deployment/commit/01cf92aac7b32b8eb2f2868e66b185465e2023b1))
+* **deps:** bump @vercel/ncc from 0.34.0 to 0.36.0 ([6308ee2](https://github.com/sws2apps/firebase-deployment/commit/6308ee25fa2f47132b6fc3a9ca4ba7d3fe36bc33))
+* **deps:** bump @vercel/ncc from 0.36.0 to 0.36.1 ([7eaedf5](https://github.com/sws2apps/firebase-deployment/commit/7eaedf5012aab3a5bb7c68317f6bb217f69cb941))
+
 ## [3.0.1](https://github.com/sws2apps/firebase-deployment/compare/v3.0.0...v3.0.1) (2022-09-24)
 
 
