@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/sws2apps/firebase-deployment/compare/v3.1.0...v3.2.0) (2023-02-28)
+
+
+### Features
+
+* **actions:** add debug mode ([56f5a21](https://github.com/sws2apps/firebase-deployment/commit/56f5a21b82ad25270363f01a51d928dafe668d54))
+
 # [3.1.0](https://github.com/sws2apps/firebase-deployment/compare/v3.0.1...v3.1.0) (2023-02-17)
 
 
