@@ -31,6 +31,9 @@ jobs:
       id-token: 'write'
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Deploy to Firebase
         uses: sws2apps/firebase-deployment@main #consider using pin for dependabot auto update
         with:
