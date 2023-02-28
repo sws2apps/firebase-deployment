@@ -15,22 +15,26 @@ const run = async () => {
 
 	// check only deployment settings
 	let deployOnly = process.env.function === 'true' ? 'function' : '';
-	deployOnly +=
-		process.env.hosting === 'true'
-			? `${deployOnly !== '' ? ' ' : ''}hosting`
-			: '';
+	deployOnly += deployOnly === '' ? '' : ' ';
+	deployOnly += process.env.hosting === 'true' ? `hosting` : '';
+
+	let cmd = `firebase deploy -m ${process.env.GITHUB_SHA}`;
+	cmd += config ? ` --config ${config}` : ' ';
+	cmd += ` --project ${project}`;
+	cmd += deployOnly !== '' ? ` --only ${deployOnly}` : '';
 
 	try {
-		// attempt to run firebase deploy, and throw an error if failed
-		await exec.exec(
-			`firebase deploy -m ${process.env.GITHUB_SHA} ${
-				config ? `--config ${config}` : ''
-			} --project ${project} ${
-				deployOnly !== '' ? ` --only ${deployOnly}` : ''
-			}`
-		);
+		// attempt to run firebase deploy, and run with debug mode if failed
+		await exec.exec(cmd);
 	} catch (error) {
-		core.setFailed(`An error occured while deploying to Firebase: ${error}`);
+		core.error(`An error occured while deploying to Firebase: ${error}. Retrying with debug mode enabled ...`);
+
+		// attempt to run firebase deploy with debug mode
+		try {
+			await exec.exec(`${cmd} --debug`);
+		} catch (error) {
+			core.setFailed(`An error occured while deploying to Firebase: ${error}`);
+		}
 	}
 };
 
