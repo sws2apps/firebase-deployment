@@ -1,3 +1,15 @@
+# [3.3.0](https://github.com/sws2apps/firebase-deployment/compare/v3.2.0...v3.3.0) (2023-04-06)
+
+
+### Bug Fixes
+
+* **action:** allow specifying node version ([db149f6](https://github.com/sws2apps/firebase-deployment/commit/db149f64e45e8126f9bd2d35df0afdd23480ffa7))
+
+
+### Features
+
+* **deps:** bump @semantic-release/changelog from 6.0.2 to 6.0.3 ([17c6cf5](https://github.com/sws2apps/firebase-deployment/commit/17c6cf565f045fa0f282d380086df495af1a79f5))
+
 # [3.2.0](https://github.com/sws2apps/firebase-deployment/compare/v3.1.0...v3.2.0) (2023-02-28)
 
 
