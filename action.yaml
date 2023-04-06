@@ -20,13 +20,17 @@ inputs:
   hosting:
     description: 'Deploy only hosting site'
     required: false
+  node-version:
+    description: 'NodeJS Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.'
+    required: false
+    default: 'current'
 runs:
   using: 'composite'
   steps:
-    - name: Use Node.js current version
+    - name: Setup Node.js 
       uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
       with:
-        node-version: current
+        node-version: ${{ inputs.node-version }}
 
     - name: Install Firebase CLI
       run: npm install -g firebase-tools
