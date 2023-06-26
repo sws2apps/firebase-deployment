@@ -39,7 +39,6 @@ jobs:
         with:
           workloadIdentityProvider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
           serviceAccount: ${{ secrets.SERVICE_ACCOUNT }}
-          project: github-workflow-sws
           node-version: 18 #optional, node-version you want to use following the Semantic Versioning Specification, default to current
           config: 'frontend/firebase.json' #optional
           function: true #optional & boolean
