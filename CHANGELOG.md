@@ -1,3 +1,11 @@
+# [3.4.0](https://github.com/sws2apps/firebase-deployment/compare/v3.3.0...v3.4.0) (2023-09-08)
+
+
+### Features
+
+* **deps:** bump @vercel/ncc from 0.36.1 to 0.38.0 ([16871b7](https://github.com/sws2apps/firebase-deployment/commit/16871b7fdefabab90c6da8eed382a0aeb4728ae0))
+* **deps:** bump yaml and semantic-release ([4706cbb](https://github.com/sws2apps/firebase-deployment/commit/4706cbb29d9f2c19638ad525c1a418e0a5225537))
+
 # [3.3.0](https://github.com/sws2apps/firebase-deployment/compare/v3.2.0...v3.3.0) (2023-04-06)
 
 
