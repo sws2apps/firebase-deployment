@@ -14,9 +14,17 @@ const run = async () => {
 	const config = process.env.config;
 
 	// check only deployment settings
-	let deployOnly = process.env.function === 'true' ? 'function' : '';
-	deployOnly += deployOnly === '' ? '' : ' ';
-	deployOnly += process.env.hosting === 'true' ? `hosting` : '';
+	let deployList = [];
+
+	if (process.env.function === 'true') {
+		deployList.push('functions');
+	}
+
+	if (process.env.hosting === 'true') {
+		deployList.push('hosting');
+	}
+
+	const deployOnly = deployList.join(',');
 
 	let cmd = `firebase deploy -m ${process.env.GITHUB_SHA}`;
 	cmd += config ? ` --config ${config}` : ' ';
@@ -25,7 +33,11 @@ const run = async () => {
 
 	try {
 		// attempt to run firebase deploy, and run with debug mode if failed
-		await exec.exec(cmd);
+		// TODO:
+		//   1. Add the current stdout and stderr as listeners to the getExecOutput listeners https://github.com/actions/toolkit/blob/main/packages/exec/src/exec.ts#L44
+		//   2. Print the result output using the relevant core function.
+		const result = await exec.getExecOutput(cmd);
+
 	} catch (error) {
 		core.error(`An error occured while deploying to Firebase: ${error}. Retrying with debug mode enabled ...`);
 
