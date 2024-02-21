@@ -554,7 +554,7 @@ class OidcClient {
                 .catch(error => {
                 throw new Error(`Failed to get ID Token. \n 
         Error Code : ${error.statusCode}\n 
-        Error Message: ${error.result.message}`);
+        Error Message: ${error.message}`);
             });
             const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
             if (!id_token) {
@@ -4071,6 +4071,11 @@ var __webpack_exports__ = {};
 
 
 const run = async () => {
+	_actions_core__WEBPACK_IMPORTED_MODULE_0__.info("This is the joinsunfish version of the code.");
+	_actions_core__WEBPACK_IMPORTED_MODULE_0__.error("IS ANYONE LISTENING TO ME?!");
+
+	process.stdout.write("HELLO?!\n");
+
 	// preflight check before starting the actions
 	const project = process.env.project;
 	if (!project) {
@@ -4082,24 +4087,53 @@ const run = async () => {
 	const config = process.env.config;
 
 	// check only deployment settings
-	let deployOnly = process.env.function === 'true' ? 'function' : '';
-	deployOnly += deployOnly === '' ? '' : ' ';
-	deployOnly += process.env.hosting === 'true' ? `hosting` : '';
+	let deployList = [];
 
-	let cmd = `firebase deploy -m ${process.env.GITHUB_SHA}`;
-	cmd += config ? ` --config ${config}` : ' ';
-	cmd += ` --project ${project}`;
-	cmd += deployOnly !== '' ? ` --only ${deployOnly}` : '';
+	if (process.env.function === 'true') {
+		deployList.push('functions');
+	}
+
+	if (process.env.hosting === 'true') {
+		deployList.push('hosting');
+	}
+
+	let args = ['deploy', '-m', process.env.GITHUB_SHA];
+
+	if (config) {
+		args.push('--config', config);
+	}
+
+	args.push('--project', project);
+
+	if (deployList.length > 0) {
+		args.push('--only', deployList.join(','));
+	}
+
+	const options = {};
+	options.listeners = {
+	  stdout: (data) => {
+		process.stdout.write(data.toString());
+	  },
+	  stderr: (data) => {
+		process.stderr.write(data.toString());
+	  },
+	  stdline: (data) => {
+		process.stdline.write(data.toString());
+	  },
+	};
 
 	try {
 		// attempt to run firebase deploy, and run with debug mode if failed
-		await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec(cmd);
+		const result = await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec("firebase", args, options);
+
 	} catch (error) {
 		_actions_core__WEBPACK_IMPORTED_MODULE_0__.error(`An error occured while deploying to Firebase: ${error}. Retrying with debug mode enabled ...`);
 
 		// attempt to run firebase deploy with debug mode
+		args.push("--debug");
+
 		try {
-			await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec(`${cmd} --debug`);
+			await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec("firebase", args, options);
 		} catch (error) {
 			_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(`An error occured while deploying to Firebase: ${error}`);
 		}

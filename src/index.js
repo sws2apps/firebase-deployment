@@ -37,7 +37,7 @@ const run = async () => {
 
 	args.push('--project', project);
 
-	if (deployOnly.length > 0) {
+	if (deployList.length > 0) {
 		args.push('--only', deployList.join(','));
 	}
 
