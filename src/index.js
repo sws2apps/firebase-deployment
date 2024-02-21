@@ -4,6 +4,7 @@ import exec from '@actions/exec';
 
 const run = async () => {
 	core.info("This is the joinsunfish version of the code.");
+	core.error("IS ANYONE LISTENING TO ME?!");
 
 	// preflight check before starting the actions
 	const project = process.env.project;
