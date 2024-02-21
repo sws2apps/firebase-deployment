@@ -49,7 +49,7 @@ const run = async () => {
 
 	try {
 		// attempt to run firebase deploy, and run with debug mode if failed
-		const result = await exec.exec("firebase", args, options);
+		await exec.exec("firebase", args, options);
 
 	} catch (error) {
 		core.error(`An error occured while deploying to Firebase: ${error}. Retrying with debug mode enabled ...`);

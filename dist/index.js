@@ -4117,7 +4117,7 @@ const run = async () => {
 
 	try {
 		// attempt to run firebase deploy, and run with debug mode if failed
-		const result = await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec("firebase", args, options);
+		await _actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec("firebase", args, options);
 
 	} catch (error) {
 		_actions_core__WEBPACK_IMPORTED_MODULE_0__.error(`An error occured while deploying to Firebase: ${error}. Retrying with debug mode enabled ...`);
