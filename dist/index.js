@@ -4071,11 +4071,6 @@ var __webpack_exports__ = {};
 
 
 const run = async () => {
-	_actions_core__WEBPACK_IMPORTED_MODULE_0__.info("This is the joinsunfish version of the code.");
-	_actions_core__WEBPACK_IMPORTED_MODULE_0__.error("IS ANYONE LISTENING TO ME?!");
-
-	process.stdout.write("HELLO?!\n");
-
 	// preflight check before starting the actions
 	const project = process.env.project;
 	if (!project) {
@@ -4097,13 +4092,11 @@ const run = async () => {
 		deployList.push('hosting');
 	}
 
-	let args = ['deploy', '-m', process.env.GITHUB_SHA];
+	let args = ['deploy', '-m', process.env.GITHUB_SHA, '--project', project];
 
 	if (config) {
 		args.push('--config', config);
 	}
-
-	args.push('--project', project);
 
 	if (deployList.length > 0) {
 		args.push('--only', deployList.join(','));
