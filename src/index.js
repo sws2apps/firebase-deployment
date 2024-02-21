@@ -39,20 +39,20 @@ const run = async () => {
 		args.push('--only', deployList.join(','));
 	}
 
-	try {
-		const options = {};
-		options.listeners = {
-		  stdout: (data) => {
-			process.stdout.write(data.toString());
-		  },
-		  stderr: (data) => {
-			process.stderr.write(data.toString());
-		  },
-		  stdline: (data) => {
-			process.stdline.write(data.toString());
-		  },
-		};
+	const options = {};
+	options.listeners = {
+	  stdout: (data) => {
+		process.stdout.write(data.toString());
+	  },
+	  stderr: (data) => {
+		process.stderr.write(data.toString());
+	  },
+	  stdline: (data) => {
+		process.stdline.write(data.toString());
+	  },
+	};
 
+	try {
 		// attempt to run firebase deploy, and run with debug mode if failed
 		const result = await exec.exec("firebase", args, options);
 
