@@ -1,3 +1,16 @@
+# [3.5.0](https://github.com/sws2apps/firebase-deployment/compare/v3.4.0...v3.5.0) (2024-02-21)
+
+
+### Bug Fixes
+
+* **actions:** update deploy command and print output of exec to the current process ([9fc9677](https://github.com/sws2apps/firebase-deployment/commit/9fc9677af3e7f9623195fc9bd4f1bef1e6308012))
+
+
+### Features
+
+* **deps:** bump @actions/core from 1.10.0 to 1.10.1 ([599ce41](https://github.com/sws2apps/firebase-deployment/commit/599ce4107648a1dced302c4eb5951616c82807d3))
+* **deps:** bump @vercel/ncc from 0.38.0 to 0.38.1 ([6298aec](https://github.com/sws2apps/firebase-deployment/commit/6298aec72d57091317d8f395a15e1b05544817c9))
+
 # [3.4.0](https://github.com/sws2apps/firebase-deployment/compare/v3.3.0...v3.4.0) (2023-09-08)
 
 
