@@ -1,3 +1,10 @@
+# [3.6.0](https://github.com/sws2apps/firebase-deployment/compare/v3.5.0...v3.6.0) (2024-06-15)
+
+
+### Features
+
+* **deps:** bump braces from 3.0.2 to 3.0.3 ([d028fc1](https://github.com/sws2apps/firebase-deployment/commit/d028fc170cc8e897e9058b69416fc20e5cac7af0))
+
 # [3.5.0](https://github.com/sws2apps/firebase-deployment/compare/v3.4.0...v3.5.0) (2024-02-21)
 
 
