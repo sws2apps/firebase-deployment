@@ -1,3 +1,12 @@
+# [3.7.0](https://github.com/sws2apps/firebase-deployment/compare/v3.6.0...v3.7.0) (2024-10-10)
+
+
+### Features
+
+* **deps:** bump @actions/core from 1.10.1 to 1.11.0 ([6230c02](https://github.com/sws2apps/firebase-deployment/commit/6230c02c243f2efac1a6327d1b61d6609bc768b8))
+* **deps:** bump @actions/core from 1.11.0 to 1.11.1 ([1bb0cbb](https://github.com/sws2apps/firebase-deployment/commit/1bb0cbb6e1915dc223305f1bdeeea23a347cc02d))
+* **deps:** bump @vercel/ncc from 0.38.1 to 0.38.2 ([d2adf2d](https://github.com/sws2apps/firebase-deployment/commit/d2adf2d4b0b0a4249b205126d728d412cb191f93))
+
 # [3.6.0](https://github.com/sws2apps/firebase-deployment/compare/v3.5.0...v3.6.0) (2024-06-15)
 
 
