@@ -37,7 +37,7 @@ runs:
       shell: bash
 
     - name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@140bb5113ffb6b65a7e9b937a81fa96cf5064462'
+      uses: 'google-github-actions/auth@b7593ed2efd1c1617e1b0254da33b86225adb2a5'
       with:
         workload_identity_provider: ${{ inputs.workloadIdentityProvider }}
         service_account: ${{ inputs.serviceAccount }}
