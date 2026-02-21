@@ -31293,45 +31293,24 @@ module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("util");
 /******/ }
 /******/ 
 /************************************************************************/
-/******/ /* webpack/runtime/compat get default export */
-/******/ (() => {
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__nccwpck_require__.n = (module) => {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			() => (module['default']) :
-/******/ 			() => (module);
-/******/ 		__nccwpck_require__.d(getter, { a: getter });
-/******/ 		return getter;
-/******/ 	};
-/******/ })();
-/******/ 
-/******/ /* webpack/runtime/define property getters */
-/******/ (() => {
-/******/ 	// define getter functions for harmony exports
-/******/ 	__nccwpck_require__.d = (exports, definition) => {
-/******/ 		for(var key in definition) {
-/******/ 			if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
-/******/ 				Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 			}
-/******/ 		}
-/******/ 	};
-/******/ })();
-/******/ 
-/******/ /* webpack/runtime/hasOwnProperty shorthand */
-/******/ (() => {
-/******/ 	__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ })();
-/******/ 
 /******/ /* webpack/runtime/compat */
 /******/ 
 /******/ if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = new URL('.', import.meta.url).pathname.slice(import.meta.url.match(/^file:\/\/\/\w:/) ? 1 : 0, -1) + "/";
 /******/ 
 /************************************************************************/
 var __webpack_exports__ = {};
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(7484);
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _actions_exec__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(5236);
-/* harmony import */ var _actions_exec__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(_actions_exec__WEBPACK_IMPORTED_MODULE_1__);
+
+// EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
+var core = __nccwpck_require__(7484);
+// EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
+var exec = __nccwpck_require__(5236);
+;// CONCATENATED MODULE: external "node:fs/promises"
+const promises_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("node:fs/promises");
+;// CONCATENATED MODULE: external "node:fs"
+const external_node_fs_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("node:fs");
+;// CONCATENATED MODULE: ./src/index.ts
+
+
 
 
 const toErrorMessage = (error) => {
@@ -31340,22 +31319,49 @@ const toErrorMessage = (error) => {
     }
     return String(error);
 };
+const normalizeBooleanInput = (value) => {
+    if (!value) {
+        return false;
+    }
+    const normalized = value.trim().toLowerCase();
+    return normalized === 'true' || normalized === '1' || normalized === 'yes';
+};
+const isLikelyTransientError = (error) => {
+    const message = toErrorMessage(error).toLowerCase();
+    return (message.includes('timed out') ||
+        message.includes('timeout') ||
+        message.includes('econnreset') ||
+        message.includes('eai_again') ||
+        message.includes('enotfound') ||
+        message.includes('network'));
+};
 const run = async () => {
     const project = process.env.project;
     if (!project) {
-        _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('The Firebase project is missing from the workflow file');
+        core.setFailed('The Firebase project is missing from the workflow file');
         return;
     }
     const config = process.env.config;
     const deployList = [];
-    if (process.env.function === 'true') {
+    if (normalizeBooleanInput(process.env.function)) {
         deployList.push('functions');
     }
-    if (process.env.hosting === 'true') {
+    if (normalizeBooleanInput(process.env.hosting)) {
         deployList.push('hosting');
     }
-    const args = ['deploy', '-m', process.env.GITHUB_SHA ?? '', '--project', project];
+    const args = ['deploy', '--project', project];
+    const sha = process.env.GITHUB_SHA?.trim();
+    if (sha) {
+        args.push('-m', sha);
+    }
     if (config) {
+        try {
+            await (0,promises_namespaceObject.access)(config, external_node_fs_namespaceObject.constants.R_OK);
+        }
+        catch {
+            core.setFailed(`The Firebase config file is not readable: ${config}`);
+            return;
+        }
         args.push('--config', config);
     }
     if (deployList.length > 0) {
@@ -31372,18 +31378,24 @@ const run = async () => {
         }
     };
     try {
-        await (0,_actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec)('firebase', args, options);
+        await (0,exec.exec)('firebase', args, options);
     }
     catch (error) {
-        _actions_core__WEBPACK_IMPORTED_MODULE_0__.error(`An error occurred while deploying to Firebase: ${toErrorMessage(error)}. Retrying with debug mode enabled ...`);
+        if (!isLikelyTransientError(error)) {
+            core.setFailed(`An error occurred while deploying to Firebase: ${toErrorMessage(error)}`);
+            return;
+        }
+        core.error(`A transient error occurred while deploying to Firebase: ${toErrorMessage(error)}. Retrying with debug mode enabled ...`);
         args.push('--debug');
         try {
-            await (0,_actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec)('firebase', args, options);
+            await (0,exec.exec)('firebase', args, options);
         }
         catch (retryError) {
-            _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(`An error occurred while deploying to Firebase: ${toErrorMessage(retryError)}`);
+            core.setFailed(`An error occurred while deploying to Firebase: ${toErrorMessage(retryError)}`);
         }
     }
 };
-void run();
+void run().catch((error) => {
+    core.setFailed(`Unhandled deployment error: ${toErrorMessage(error)}`);
+});
 
