@@ -27661,18 +27661,8 @@ const run = async () => {
     if (deployList.length > 0) {
         args.push('--only', deployList.join(','));
     }
-    const options = {
-        listeners: {
-            stdout: (data) => {
-                process.stdout.write(data.toString());
-            },
-            stderr: (data) => {
-                process.stderr.write(data.toString());
-            }
-        }
-    };
     try {
-        await (0,_actions_exec__WEBPACK_IMPORTED_MODULE_1__/* .exec */ .m)('firebase', args, options);
+        await (0,_actions_exec__WEBPACK_IMPORTED_MODULE_1__/* .exec */ .m)('firebase', args);
     }
     catch (error) {
         if (!isLikelyTransientError(error)) {
@@ -27682,7 +27672,7 @@ const run = async () => {
         _actions_core__WEBPACK_IMPORTED_MODULE_0__/* .error */ .z3(`A transient error occurred while deploying to Firebase: ${toErrorMessage(error)}. Retrying with debug mode enabled ...`);
         args.push('--debug');
         try {
-            await (0,_actions_exec__WEBPACK_IMPORTED_MODULE_1__/* .exec */ .m)('firebase', args, options);
+            await (0,_actions_exec__WEBPACK_IMPORTED_MODULE_1__/* .exec */ .m)('firebase', args);
         }
         catch (retryError) {
             _actions_core__WEBPACK_IMPORTED_MODULE_0__/* .setFailed */ .C1(`An error occurred while deploying to Firebase: ${toErrorMessage(retryError)}`);
