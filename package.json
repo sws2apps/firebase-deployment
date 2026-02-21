@@ -16,13 +16,15 @@
     "url": "https://github.com/sws2apps/firebase-deployment.git"
   },
   "scripts": {
-    "build": "ncc build src/index.js --license licenses.txt"
+    "build": "ncc build src/index.ts --license licenses.txt"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
-    "@vercel/ncc": "^0.38.4"
+    "@types/node": "^25.3.0",
+    "@vercel/ncc": "^0.38.4",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@actions/core": "^2.0.2",
