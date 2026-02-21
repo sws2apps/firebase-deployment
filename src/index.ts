@@ -1,5 +1,7 @@
 import * as core from '@actions/core';
 import { exec, type ExecOptions } from '@actions/exec';
+import { access } from 'node:fs/promises';
+import { constants } from 'node:fs';
 
 const toErrorMessage = (error: unknown): string => {
 	if (error instanceof Error) {
@@ -7,6 +9,27 @@ const toErrorMessage = (error: unknown): string => {
 	}
 
 	return String(error);
+};
+
+const normalizeBooleanInput = (value: string | undefined): boolean => {
+	if (!value) {
+		return false;
+	}
+
+	const normalized = value.trim().toLowerCase();
+	return normalized === 'true' || normalized === '1' || normalized === 'yes';
+};
+
+const isLikelyTransientError = (error: unknown): boolean => {
+	const message = toErrorMessage(error).toLowerCase();
+	return (
+		message.includes('timed out') ||
+		message.includes('timeout') ||
+		message.includes('econnreset') ||
+		message.includes('eai_again') ||
+		message.includes('enotfound') ||
+		message.includes('network')
+	);
 };
 
 const run = async (): Promise<void> => {
@@ -19,17 +42,28 @@ const run = async (): Promise<void> => {
 	const config = process.env.config;
 	const deployList: string[] = [];
 
-	if (process.env.function === 'true') {
+	if (normalizeBooleanInput(process.env.function)) {
 		deployList.push('functions');
 	}
 
-	if (process.env.hosting === 'true') {
+	if (normalizeBooleanInput(process.env.hosting)) {
 		deployList.push('hosting');
 	}
 
-	const args: string[] = ['deploy', '-m', process.env.GITHUB_SHA ?? '', '--project', project];
+	const args: string[] = ['deploy', '--project', project];
+	const sha = process.env.GITHUB_SHA?.trim();
+	if (sha) {
+		args.push('-m', sha);
+	}
 
 	if (config) {
+		try {
+			await access(config, constants.R_OK);
+		} catch {
+			core.setFailed(`The Firebase config file is not readable: ${config}`);
+			return;
+		}
+
 		args.push('--config', config);
 	}
 
@@ -51,8 +85,13 @@ const run = async (): Promise<void> => {
 	try {
 		await exec('firebase', args, options);
 	} catch (error) {
+		if (!isLikelyTransientError(error)) {
+			core.setFailed(`An error occurred while deploying to Firebase: ${toErrorMessage(error)}`);
+			return;
+		}
+
 		core.error(
-			`An error occurred while deploying to Firebase: ${toErrorMessage(error)}. Retrying with debug mode enabled ...`
+			`A transient error occurred while deploying to Firebase: ${toErrorMessage(error)}. Retrying with debug mode enabled ...`
 		);
 
 		args.push('--debug');
@@ -65,4 +104,6 @@ const run = async (): Promise<void> => {
 	}
 };
 
-void run();
+void run().catch((error: unknown) => {
+	core.setFailed(`Unhandled deployment error: ${toErrorMessage(error)}`);
+});
