@@ -1,3 +1,27 @@
+# [3.8.0](https://github.com/sws2apps/firebase-deployment/compare/v3.7.0...v3.8.0) (2026-02-21)
+
+
+### Features
+
+* **actions:** error and commit sha handling ([47603a8](https://github.com/sws2apps/firebase-deployment/commit/47603a811d4a7fcb90ad5ef0f258c2b35be3fd31))
+* **actions:** update node default version to lts/Krypton ([2e24064](https://github.com/sws2apps/firebase-deployment/commit/2e24064af85f35a8d89a73d237fa52f96d5ee5c1))
+* **deps:** bump @actions/core and @actions/exec to 3.0.0 ([a9e591c](https://github.com/sws2apps/firebase-deployment/commit/a9e591c043c7021a9c10565f98225fea6ba7125e))
+* **deps:** bump @actions/core from 1.11.1 to 2.0.1 ([d3e895a](https://github.com/sws2apps/firebase-deployment/commit/d3e895a99c251725a6ef8dcc28ff5ee2f79c07b4))
+* **deps:** bump @actions/core from 2.0.1 to 2.0.2 ([260665a](https://github.com/sws2apps/firebase-deployment/commit/260665a9414e107cc3ab5aa6865aa9d9fbb85e88))
+* **deps:** bump @actions/exec from 1.1.1 to 2.0.0 ([098b8eb](https://github.com/sws2apps/firebase-deployment/commit/098b8ebd95cc90746ffc320991597068ecfdf811))
+* **deps:** bump @semantic-release/exec from 6.0.3 to 7.0.3 ([eaf5667](https://github.com/sws2apps/firebase-deployment/commit/eaf56678382888043c06ed6de43bc1edd87fcad8))
+* **deps:** bump @semantic-release/exec from 7.0.3 to 7.1.0 ([00ece31](https://github.com/sws2apps/firebase-deployment/commit/00ece31f7957c6141276842725440e5907ac84e4))
+* **deps:** bump @vercel/ncc from 0.38.2 to 0.38.3 ([8335a30](https://github.com/sws2apps/firebase-deployment/commit/8335a30f9c2da77fdad198307a95a98500f455db))
+* **deps:** bump @vercel/ncc from 0.38.3 to 0.38.4 ([97a0262](https://github.com/sws2apps/firebase-deployment/commit/97a02626f4d6c4b71c657d9aafb38464e76cbbad))
+* **deps:** bump glob and semantic-release ([ca16ff2](https://github.com/sws2apps/firebase-deployment/commit/ca16ff25c90b8757e0823cc12a9645863da78b3d))
+* **deps:** bump js-yaml from 4.1.0 to 4.1.1 ([74e7126](https://github.com/sws2apps/firebase-deployment/commit/74e712609c4e2d4d38b6d600673999c875fc8216))
+* **deps:** bump lodash from 4.17.21 to 4.17.23 ([a458d07](https://github.com/sws2apps/firebase-deployment/commit/a458d07aa5f07d2ff9e2d8cf0b0408cd4cd3ec5e))
+* **deps:** bump lodash-es from 4.17.21 to 4.17.23 ([bdbc2f5](https://github.com/sws2apps/firebase-deployment/commit/bdbc2f5e6970c463145e7e70d731ad0db94a7f51))
+* **deps:** bump tar and npm ([bc381c4](https://github.com/sws2apps/firebase-deployment/commit/bc381c4616fe2812512f91b87c28e025d23503ec))
+* **deps:** bump tar and npm ([0cecf3c](https://github.com/sws2apps/firebase-deployment/commit/0cecf3cae5da77a87b0221207c34a67c65be1c09))
+* **deps:** bump tar and npm ([648cb06](https://github.com/sws2apps/firebase-deployment/commit/648cb066e8f2b75f25aa42ed45826fc376fcac77))
+* **deps:** bump undici and @actions/http-client ([a9c2843](https://github.com/sws2apps/firebase-deployment/commit/a9c28435de0a3951e438e39d702c3e8a0eea7c66))
+
 # [3.7.0](https://github.com/sws2apps/firebase-deployment/compare/v3.6.0...v3.7.0) (2024-10-10)
 
 
