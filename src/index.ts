@@ -1,5 +1,5 @@
 import * as core from '@actions/core';
-import { exec, type ExecOptions } from '@actions/exec';
+import { exec } from '@actions/exec';
 import { access } from 'node:fs/promises';
 import { constants } from 'node:fs';
 
@@ -71,19 +71,8 @@ const run = async (): Promise<void> => {
     args.push('--only', deployList.join(','));
   }
 
-  const options: ExecOptions = {
-    listeners: {
-      stdout: (data: Buffer) => {
-        process.stdout.write(data.toString());
-      },
-      stderr: (data: Buffer) => {
-        process.stderr.write(data.toString());
-      },
-    },
-  };
-
   try {
-    await exec('firebase', args, options);
+    await exec('firebase', args);
   } catch (error) {
     if (!isLikelyTransientError(error)) {
       core.setFailed(
@@ -99,7 +88,7 @@ const run = async (): Promise<void> => {
     args.push('--debug');
 
     try {
-      await exec('firebase', args, options);
+      await exec('firebase', args);
     } catch (retryError) {
       core.setFailed(
         `An error occurred while deploying to Firebase: ${toErrorMessage(retryError)}`,
