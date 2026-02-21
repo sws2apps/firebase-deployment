@@ -23,11 +23,11 @@ inputs:
   node-version:
     description: 'NodeJS Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.'
     required: false
-    default: 'current'
+    default: 'lts/Krypton'
 runs:
   using: 'composite'
   steps:
-    - name: Setup Node.js 
+    - name: Setup Node.js
       uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238
       with:
         node-version: ${{ inputs.node-version }}
