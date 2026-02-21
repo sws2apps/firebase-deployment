@@ -27620,8 +27620,8 @@ const normalizeBooleanInput = (value) => {
     const normalized = value.trim().toLowerCase();
     return normalized === 'true' || normalized === '1' || normalized === 'yes';
 };
-const isLikelyTransientError = (error) => {
-    const message = toErrorMessage(error).toLowerCase();
+const isLikelyTransientError = (error, stderrOutput = '') => {
+    const message = `${toErrorMessage(error)}\n${stderrOutput}`.toLowerCase();
     return (message.includes('timed out') ||
         message.includes('timeout') ||
         message.includes('econnreset') ||
@@ -27661,11 +27661,19 @@ const run = async () => {
     if (deployList.length > 0) {
         args.push('--only', deployList.join(','));
     }
+    let firstAttemptStderr = '';
+    const captureStderrOptions = {
+        listeners: {
+            stderr: (data) => {
+                firstAttemptStderr += data.toString();
+            },
+        },
+    };
     try {
-        await (0,_actions_exec__WEBPACK_IMPORTED_MODULE_1__/* .exec */ .m)('firebase', args);
+        await (0,_actions_exec__WEBPACK_IMPORTED_MODULE_1__/* .exec */ .m)('firebase', args, captureStderrOptions);
     }
     catch (error) {
-        if (!isLikelyTransientError(error)) {
+        if (!isLikelyTransientError(error, firstAttemptStderr)) {
             _actions_core__WEBPACK_IMPORTED_MODULE_0__/* .setFailed */ .C1(`An error occurred while deploying to Firebase: ${toErrorMessage(error)}`);
             return;
         }
