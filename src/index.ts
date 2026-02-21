@@ -1,5 +1,5 @@
 import * as core from '@actions/core';
-import { exec } from '@actions/exec';
+import { exec, type ExecOptions } from '@actions/exec';
 import { access } from 'node:fs/promises';
 import { constants } from 'node:fs';
 
@@ -20,8 +20,8 @@ const normalizeBooleanInput = (value: string | undefined): boolean => {
   return normalized === 'true' || normalized === '1' || normalized === 'yes';
 };
 
-const isLikelyTransientError = (error: unknown): boolean => {
-  const message = toErrorMessage(error).toLowerCase();
+const isLikelyTransientError = (error: unknown, stderrOutput = ''): boolean => {
+  const message = `${toErrorMessage(error)}\n${stderrOutput}`.toLowerCase();
   return (
     message.includes('timed out') ||
     message.includes('timeout') ||
@@ -71,10 +71,19 @@ const run = async (): Promise<void> => {
     args.push('--only', deployList.join(','));
   }
 
+  let firstAttemptStderr = '';
+  const captureStderrOptions: ExecOptions = {
+    listeners: {
+      stderr: (data: Buffer) => {
+        firstAttemptStderr += data.toString();
+      },
+    },
+  };
+
   try {
-    await exec('firebase', args);
+    await exec('firebase', args, captureStderrOptions);
   } catch (error) {
-    if (!isLikelyTransientError(error)) {
+    if (!isLikelyTransientError(error, firstAttemptStderr)) {
       core.setFailed(
         `An error occurred while deploying to Firebase: ${toErrorMessage(error)}`,
       );
